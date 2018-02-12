@@ -1,0 +1,70 @@
+﻿<Window x:Class="AutoClicker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoClicker"
+        mc:Ignorable="d"
+        ResizeMode="CanResizeWithGrip"
+        WindowStyle="ToolWindow"
+        Title="AutoClicker" 
+        Height="350" Width="300"
+        MinWidth="300" MaxWidth="300"
+        MinHeight="200" Icon="Resources/icon_png.png.ico">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <LinearGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                    <RotateTransform Angle="45" CenterY="0.5" CenterX="0.5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </LinearGradientBrush.RelativeTransform>
+            <GradientStop Color="#FFF2F8FF" Offset="0"/>
+            <GradientStop Color="#FFD9EBFF" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close" Executed="On_Close"/>
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Время между циклами(сек.)" Grid.Row="0" Grid.Column="0" Margin="5"/>
+        <TextBox x:Name="timeSec" Grid.Row="0" Grid.Column="1" Margin="5"/>
+        <TextBlock Text="Время между операциями(сек.)" Grid.Row="1" Grid.Column="0" Margin="5"/>
+        <TextBox x:Name="timeSleepSec" Grid.Row="1" Grid.Column="1" Margin="5"/>
+        <TextBlock Text="Количество циклов" Grid.Row="2" Grid.Column="0" Margin="5"/>
+        <TextBox x:Name="repeatCount" Grid.Row="2" Grid.Column="1" Margin="5"/>
+        <TextBlock Grid.Row="3" Grid.ColumnSpan="2" x:Name="help" TextWrapping="Wrap"
+                   Padding="5" Text="Помощь"
+                   FontSize="10" Foreground="Gray"
+                   TextAlignment="Center"/>
+        <ScrollViewer Grid.Row="4" Grid.ColumnSpan="3" Background="White">
+            <TextBlock TextWrapping="Wrap" x:Name="logText" Margin="5"/>
+        </ScrollViewer>
+        <StackPanel Grid.Row="5" Grid.ColumnSpan="2"
+                    Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock x:Name="xText" TextAlignment="Center"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="10" Foreground="Gray" Width="90"/>
+            <Button Grid.Row="3" Grid.ColumnSpan="2" Width="90"
+                    Padding="5" Margin="3" x:Name="startBtn"
+                    Content="Включить" Click="On_Btn"/>
+            <TextBlock x:Name="yText" TextAlignment="Center"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="10" Foreground="Gray" Width="90"/>
+        </StackPanel>
+    </Grid>
+</Window>
